@@ -19,6 +19,9 @@ export default function Navbar() {
           <Link href="/modules/design-basics" className="text-sm font-medium hover:text-primary">
             Modules
           </Link>
+          <Link href="/ai-tools" className="text-sm font-medium hover:text-primary">
+            AI Tools
+          </Link>
           <Link href="/playground" className="text-sm font-medium hover:text-primary">
             AI Playground
           </Link>
