@@ -43,33 +43,40 @@ export default function Home() {
       {/* Features Section */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Why Learn AI-Assisted UX Design?</h2>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              🚀 AI is Changing UX. Are You Ready to Lead the Future?
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              The way we design is evolving—fast. AI isn't just a tool; it's a force multiplier that amplifies creativity, accelerates workflows, and unlocks new possibilities. The future of UX belongs to those who can adapt, experiment, and build with AI.
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-card p-6 rounded-lg border shadow-sm">
-              <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
+            <div className="bg-card p-8 rounded-lg border shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-primary/10 p-3 rounded-full w-fit mb-6">
                 <Zap className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Boost Productivity</h3>
+              <h3 className="text-xl font-semibold mb-3">⚡ Supercharge Your Workflow</h3>
               <p className="text-muted-foreground">
-                Learn how AI tools can automate repetitive tasks and help you focus on creative problem-solving.
+                Go from idea to execution 10x faster with AI-powered ideation, research, and prototyping.
               </p>
             </div>
-            <div className="bg-card p-6 rounded-lg border shadow-sm">
-              <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
+            <div className="bg-card p-8 rounded-lg border shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-primary/10 p-3 rounded-full w-fit mb-6">
                 <BookOpen className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Structured Learning</h3>
+              <h3 className="text-xl font-semibold mb-3">📚 Learn with Purpose</h3>
               <p className="text-muted-foreground">
-                Follow our curated learning accelerators with hands-on exercises and real-world applications.
+                A structured, hands-on curriculum designed to take you from AI-curious to AI-proficient.
               </p>
             </div>
-            <div className="bg-card p-6 rounded-lg border shadow-sm">
-              <div className="bg-primary/10 p-3 rounded-full w-fit mb-4">
+            <div className="bg-card p-8 rounded-lg border shadow-sm hover:shadow-md transition-shadow">
+              <div className="bg-primary/10 p-3 rounded-full w-fit mb-6">
                 <Users className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Community Support</h3>
+              <h3 className="text-xl font-semibold mb-3">🤝 Build with a Community</h3>
               <p className="text-muted-foreground">
-                Connect with fellow designers, share insights, and get feedback on your AI-assisted projects.
+                Connect with designers pioneering AI-enhanced UX, share insights, and push boundaries together.
               </p>
             </div>
           </div>

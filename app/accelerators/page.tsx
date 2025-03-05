@@ -1,9 +1,18 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Search, Filter, ArrowRight, Clock, BookOpen } from "lucide-react"
+import { AcceleratorCard } from "@/components/accelerator-card"
+
+interface Accelerator {
+  id: string
+  title: string
+  description: string
+  level: string
+  duration: string
+  modules: number
+  image: string
+  imageAlt: string
+}
 
 export default function AcceleratorsPage() {
-  const accelerators = [
+  const accelerators: Accelerator[] = [
     {
       id: "introduction",
       title: "Introduction to AI in UX Design",
@@ -11,7 +20,8 @@ export default function AcceleratorsPage() {
       level: "Beginner",
       duration: "4 hours",
       modules: 5,
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/images/accelerators/intro-ai-ux.jpg",
+      imageAlt: "AI and UX Design Fundamentals",
     },
     {
       id: "design-builder",
@@ -20,7 +30,8 @@ export default function AcceleratorsPage() {
       level: "Intermediate",
       duration: "6 hours",
       modules: 7,
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/images/accelerators/design-builder.jpg",
+      imageAlt: "Design to Implementation with AI",
     },
     {
       id: "analysis-iteration",
@@ -29,7 +40,8 @@ export default function AcceleratorsPage() {
       level: "Advanced",
       duration: "8 hours",
       modules: 9,
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/images/accelerators/analysis-iteration.jpg",
+      imageAlt: "UX Analysis and Iteration with AI",
     },
     {
       id: "generative-design",
@@ -38,7 +50,8 @@ export default function AcceleratorsPage() {
       level: "Intermediate",
       duration: "5 hours",
       modules: 6,
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/images/accelerators/generative-design.jpg",
+      imageAlt: "Generative Design with AI",
     },
     {
       id: "ai-ethics",
@@ -47,7 +60,8 @@ export default function AcceleratorsPage() {
       level: "All Levels",
       duration: "3 hours",
       modules: 4,
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/images/accelerators/ai-ethics.jpg",
+      imageAlt: "Ethics in AI-Assisted Design",
     },
     {
       id: "ai-collaboration",
@@ -56,77 +70,23 @@ export default function AcceleratorsPage() {
       level: "Intermediate",
       duration: "4 hours",
       modules: 5,
-      image: "/placeholder.svg?height=200&width=400",
+      image: "/images/accelerators/ai-collaboration.jpg",
+      imageAlt: "AI Collaboration in Design Teams",
     },
   ]
 
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-        <div>
-          <h1 className="text-3xl font-bold mb-2">Accelerators</h1>
-          <p className="text-muted-foreground">Explore our curated learning paths to master AI-assisted UX design</p>
-        </div>
-        <div className="flex items-center gap-3 w-full md:w-auto">
-          <div className="relative flex-grow md:flex-grow-0">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <input
-              type="text"
-              placeholder="Search accelerators..."
-              className="pl-10 pr-4 py-2 w-full md:w-64 rounded-md border focus:outline-none focus:ring-2 focus:ring-primary/50"
-            />
-          </div>
-          <Button variant="outline" size="icon">
-            <Filter className="h-4 w-4" />
-          </Button>
-        </div>
+    <div className="container mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto mb-12">
+        <h1 className="text-4xl font-bold mb-4">UX Learning Accelerators</h1>
+        <p className="text-xl text-muted-foreground">
+          Accelerate your UX design journey with AI-powered learning paths
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {accelerators.map((accelerator) => (
-          <div key={accelerator.id} className="border rounded-lg overflow-hidden bg-card shadow-sm">
-            <div className="aspect-video relative">
-              <img
-                src={accelerator.image || "/placeholder.svg"}
-                alt={accelerator.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute top-3 left-3">
-                <span
-                  className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    accelerator.level === "Beginner"
-                      ? "bg-green-100 text-green-800"
-                      : accelerator.level === "Intermediate"
-                        ? "bg-blue-100 text-blue-800"
-                        : accelerator.level === "Advanced"
-                          ? "bg-purple-100 text-purple-800"
-                          : "bg-gray-100 text-gray-800"
-                  }`}
-                >
-                  {accelerator.level}
-                </span>
-              </div>
-            </div>
-            <div className="p-5">
-              <h3 className="font-semibold text-xl mb-2">{accelerator.title}</h3>
-              <p className="text-muted-foreground text-sm mb-4">{accelerator.description}</p>
-              <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                <span className="flex items-center">
-                  <Clock className="h-4 w-4 mr-1" />
-                  {accelerator.duration}
-                </span>
-                <span className="flex items-center">
-                  <BookOpen className="h-4 w-4 mr-1" />
-                  {accelerator.modules} modules
-                </span>
-              </div>
-              <Button className="w-full" asChild>
-                <Link href={`/accelerators/${accelerator.id}`}>
-                  View Accelerator <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
-          </div>
+          <AcceleratorCard key={accelerator.id} {...accelerator} />
         ))}
       </div>
     </div>
