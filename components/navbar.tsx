@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { UserCircle } from "lucide-react"
 
@@ -7,6 +8,13 @@ export default function Navbar() {
     <header className="border-b">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
+          <Image
+            src="/images/app-icon.png"
+            alt="Catalyst Logo"
+            width={32}
+            height={32}
+            className="rounded-lg"
+          />
           <span className="font-bold text-2xl text-primary">Catalyst</span>
         </Link>
         <nav className="hidden md:flex items-center space-x-6">

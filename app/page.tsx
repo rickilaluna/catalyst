@@ -1,6 +1,7 @@
 "use client"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Zap, BookOpen, Users, Award } from "lucide-react"
 
@@ -20,8 +21,18 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-accent to-background">
-        <div className="container mx-auto px-4 text-center">
+      <section className="py-20 md:py-28 bg-gradient-to-b from-accent to-background relative overflow-hidden">
+        <div className="absolute inset-0 flex items-center justify-end pr-4 md:pr-8">
+          <Image
+            src="/images/app-icon.png"
+            alt=""
+            width={600}
+            height={600}
+            className="opacity-5 object-contain max-h-[80vh]"
+            priority
+          />
+        </div>
+        <div className="container mx-auto px-4 text-center relative">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Master AI-Assisted UX Design</h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             Learn how to leverage AI to enhance your design workflow, create better user experiences, and stay ahead in
