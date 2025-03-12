@@ -1,3 +1,4 @@
+import React from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -105,5 +106,22 @@ export default function CompletionPage({ params }: { params: { acceleratorId: st
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <CardTitle>{recommendation.title}</CardTitle>
-                    <span
-                      className={`
+                    <span>{recommendation.level}</span>
+                  </div>
+                  <CardDescription>{recommendation.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Button variant="outline" asChild>
+                    <Link href={`/accelerators/${recommendation.id}`}>
+                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
