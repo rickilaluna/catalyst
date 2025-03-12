@@ -12,10 +12,26 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Github, Mail, ArrowRight, CheckCircle2, Sparkles, BookOpen, Award } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { useUser } from "@/app/contexts/UserContext"
 
 export default function SignupPage() {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
+  const { login } = useUser()
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  })
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }))
+  }
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -23,6 +39,12 @@ export default function SignupPage() {
 
     // Simulate API call
     setTimeout(() => {
+      // Log in the user with the form data
+      login({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+      })
       setIsLoading(false)
       router.push("/onboarding")
     }, 1500)
@@ -57,17 +79,36 @@ export default function SignupPage() {
                       <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="firstName">First name</Label>
-                          <Input id="firstName" placeholder="Enter your first name" required />
+                          <Input 
+                            id="firstName" 
+                            placeholder="Enter your first name" 
+                            required 
+                            value={formData.firstName}
+                            onChange={handleInputChange}
+                          />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="lastName">Last name</Label>
-                          <Input id="lastName" placeholder="Enter your last name" required />
+                          <Input 
+                            id="lastName" 
+                            placeholder="Enter your last name" 
+                            required 
+                            value={formData.lastName}
+                            onChange={handleInputChange}
+                          />
                         </div>
                       </div>
 
                       <div className="space-y-2">
                         <Label htmlFor="email">Email</Label>
-                        <Input id="email" type="email" placeholder="Enter your email" required />
+                        <Input 
+                          id="email" 
+                          type="email" 
+                          placeholder="Enter your email" 
+                          required 
+                          value={formData.email}
+                          onChange={handleInputChange}
+                        />
                       </div>
 
                       <div className="space-y-2">
@@ -77,7 +118,14 @@ export default function SignupPage() {
                             Password requirements
                           </Link>
                         </div>
-                        <Input id="password" type="password" placeholder="Create a password" required />
+                        <Input 
+                          id="password" 
+                          type="password" 
+                          placeholder="Create a password" 
+                          required 
+                          value={formData.password}
+                          onChange={handleInputChange}
+                        />
                       </div>
 
                       <div className="flex items-center space-x-2">

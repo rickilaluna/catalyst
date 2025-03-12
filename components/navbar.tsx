@@ -1,9 +1,21 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { UserCircle } from "lucide-react"
+import { useUser } from "@/app/contexts/UserContext"
+import { useRouter } from "next/navigation"
 
 export default function Navbar() {
+  const { user, logout, isAuthenticated } = useUser()
+  const router = useRouter()
+
+  const handleLogout = () => {
+    logout()
+    router.push("/")
+  }
+
   return (
     <header className="border-b">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
@@ -38,17 +50,31 @@ export default function Navbar() {
           </Link>
         </nav>
         <div className="flex items-center space-x-4">
-          <Link href="/login">
-            <Button variant="ghost" size="sm">
-              Log in
-            </Button>
-          </Link>
-          <Link href="/signup">
-            <Button size="sm">Sign up</Button>
-          </Link>
-          <Link href="/profile" className="md:hidden">
-            <UserCircle className="h-6 w-6" />
-          </Link>
+          {isAuthenticated ? (
+            <>
+              <span className="text-sm font-medium">Welcome, {user?.firstName}!</span>
+              <Button variant="ghost" size="sm" onClick={handleLogout}>
+                Log out
+              </Button>
+              <Link href="/profile">
+                <UserCircle className="h-6 w-6" />
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/login">
+                <Button variant="ghost" size="sm">
+                  Log in
+                </Button>
+              </Link>
+              <Link href="/signup">
+                <Button size="sm">Sign up</Button>
+              </Link>
+              <Link href="/profile" className="md:hidden">
+                <UserCircle className="h-6 w-6" />
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </header>

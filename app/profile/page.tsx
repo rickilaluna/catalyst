@@ -6,16 +6,16 @@ import { BookOpen, Clock, Award, User, Settings, FileText, BarChart, Lightbulb, 
 
 export default function ProfilePage() {
   const userProfile = {
-    name: "Alex Johnson",
-    level: "Intermediate",
+    name: "Ricki Munoz",
+    level: "Advanced AI UX Designer",
     joined: "March 2025",
-    email: "alex@example.com",
+    email: "rickilaluna@gmail.com",
     avatar: "/placeholder.svg?height=100&width=100",
     stats: {
-      completed: 1,
+      completed: 2,
       inProgress: 2,
-      totalHours: 4.5,
-      streak: 2,
+      totalHours: 11.5,
+      streak: 5,
     },
   }
 
@@ -45,7 +45,7 @@ export default function ProfilePage() {
     },
   ]
 
-  const certificates = []
+  const certificates: { title: string; date: string }[] = []
 
   return (
     <div className="container mx-auto px-4 py-8">

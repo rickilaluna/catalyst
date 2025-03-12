@@ -86,7 +86,7 @@ export default function CatalystHubPage() {
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Catalyst Hub</h1>
+          <h1 className="text-3xl font-bold mb-2">Learning Hub</h1>
           <p className="text-muted-foreground">Your personalized AI-assisted UX design learning center</p>
         </div>
         <div className="mt-4 md:mt-0">
