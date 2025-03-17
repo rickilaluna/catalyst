@@ -5,15 +5,11 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Award, CheckCircle2, Download, Share2, ArrowRight, Sparkles, BookOpen, Lightbulb } from "lucide-react"
 
-type Params = {
-  acceleratorId: string
-}
-
-interface CompletionPageProps {
-  params: Params
-}
-
-export default function CompletionPage({ params }: CompletionPageProps) {
+export default function CompletionPage({ 
+  params 
+}: { 
+  params: { acceleratorId: string } 
+}) {
   // This would come from a database in a real app
   const acceleratorData = {
     "design-builder": {
