@@ -1,12 +1,14 @@
 {
-  "name": "my-v0-project",
+  "name": "uxcatalyst",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "vercel-build": "NEXT_TELEMETRY_DISABLED=1 next build",
+    "deploy": "vercel deploy --prod"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -67,6 +69,7 @@
   },
   "devDependencies": {
     "postcss-import": "^16.1.0",
-    "postcss-nesting": "^13.0.1"
+    "postcss-nesting": "^13.0.1",
+    "vercel": "^41.4.1"
   }
 }

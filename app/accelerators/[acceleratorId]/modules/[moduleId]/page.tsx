@@ -1,5 +1,6 @@
 import type React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -136,11 +137,11 @@ const moduleData: Record<string, ModuleData> = {
   },
 }
 
-export default function ModulePage({
-  params,
-}: {
+type ModulePageProps = {
   params: { acceleratorId: string; moduleId: string }
-}) {
+}
+
+export default function ModulePage({ params }: ModulePageProps) {
   const module = moduleData[params.moduleId]
 
   if (!module) {
@@ -163,16 +164,19 @@ export default function ModulePage({
       </div>
 
       <div className="mb-8 relative">
-        <img
-          src={module.image || "/placeholder.svg"}
-          alt={module.title}
-          className="w-full h-64 object-cover rounded-lg"
-        />
-        <div className="absolute top-4 left-4 flex space-x-2">
-          <span className="px-3 py-1 rounded-full text-xs font-medium bg-gray-700/80 text-white flex items-center">
-            <Clock className="h-3 w-3 mr-1" />
-            {module.duration}
-          </span>
+        <div className="w-full h-64 relative rounded-lg overflow-hidden">
+          <Image
+            src={module.image || "/placeholder.svg"}
+            alt={module.title}
+            fill
+            className="object-cover"
+          />
+          <div className="absolute top-4 left-4 flex space-x-2">
+            <span className="px-3 py-1 rounded-full text-xs font-medium bg-gray-700/80 text-white flex items-center">
+              <Clock className="h-3 w-3 mr-1" />
+              {module.duration}
+            </span>
+          </div>
         </div>
         <div className="absolute bottom-4 left-4 right-4">
           <div className="bg-white/90 dark:bg-black/80 p-4 rounded-lg backdrop-blur-sm">

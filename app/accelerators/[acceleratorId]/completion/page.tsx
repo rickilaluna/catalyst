@@ -1,10 +1,19 @@
 import React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Award, CheckCircle2, Download, Share2, ArrowRight, Sparkles, BookOpen, Lightbulb } from "lucide-react"
 
-export default function CompletionPage({ params }: { params: { acceleratorId: string } }) {
+type Params = {
+  acceleratorId: string
+}
+
+interface CompletionPageProps {
+  params: Params
+}
+
+export default function CompletionPage({ params }: CompletionPageProps) {
   // This would come from a database in a real app
   const acceleratorData = {
     "design-builder": {
@@ -60,8 +69,13 @@ export default function CompletionPage({ params }: { params: { acceleratorId: st
           </CardHeader>
           <CardContent>
             <div className="border rounded-lg p-8 bg-white text-center">
-              <div className="mb-6">
-                <img src="/placeholder.svg?height=100&width=100" alt="Catalyst Logo" className="h-16 w-16 mx-auto" />
+              <div className="mb-6 relative h-16 w-16 mx-auto">
+                <Image 
+                  src="/placeholder.svg" 
+                  alt="Catalyst Logo" 
+                  fill
+                  className="object-contain" 
+                />
               </div>
               <h2 className="text-2xl font-bold mb-2">Certificate of Completion</h2>
               <p className="text-lg mb-4">This certifies that</p>

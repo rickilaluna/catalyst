@@ -183,43 +183,30 @@ export default function IntroductionPage() {
                 <div className="p-4 bg-muted rounded-lg">
                   <p className="font-medium mb-4">What is the primary role of AI in design-to-code conversion?</p>
                   <div className="space-y-3">
-                    {[
-                      "To replace human developers completely",
-                      "To automate repetitive tasks and streamline the process",
-                      "To create designs from scratch",
-                      "To replace design tools"
-                    ].map((answer, index) => (
+                    {["To replace human developers completely","To automate repetitive tasks and streamline the process","To create designs from scratch","To replace design tools"].map((answer, index) => (
                       <label
                         key={index}
-                        className={`flex items-center space-x-2 p-3 rounded-md cursor-pointer transition-colors ${
-                          quizAnswer === answer
-                            ? answer === "To automate repetitive tasks and streamline the process"
-                              ? "bg-green-100 dark:bg-green-900"
-                              : "bg-red-100 dark:bg-red-900"
-                            : "hover:bg-muted"
-                        }`}
+                        className={`flex items-center space-x-2 p-3 rounded-md cursor-pointer transition-colors ${quizAnswer === answer ? answer === "To automate repetitive tasks and streamline the process" ? "bg-green-100 dark:bg-green-900" : "bg-red-100 dark:bg-red-900" : "hover:bg-muted"}`}
                       >
                         <input
                           type="radio"
-                          name="q1"
-                          className="form-radio"
+                          name="quiz"
+                          value={answer}
                           checked={quizAnswer === answer}
                           onChange={() => handleQuizAnswer(answer)}
-                          disabled={!!quizAnswer}
+                          className="form-radio h-4 w-4 text-primary"
                         />
-                        <span>{answer}</span>
+                        <span className="text-sm font-medium">{answer}</span>
                       </label>
                     ))}
                   </div>
                   {showFeedback && (
-                    <div className={`mt-4 p-3 rounded-md ${
-                      quizAnswer === "To automate repetitive tasks and streamline the process"
-                        ? "bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200"
-                        : "bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200"
-                    }`}>
-                      {quizAnswer === "To automate repetitive tasks and streamline the process"
-                        ? "Correct! AI is meant to assist and enhance human capabilities, not replace them."
-                        : "Not quite. AI tools are designed to assist and enhance human capabilities, not replace them."}
+                    <div className="mt-4">
+                      {quizAnswer === "To automate repetitive tasks and streamline the process" ? (
+                        <p className="text-green-600">Correct! AI helps automate repetitive tasks and streamline the design-to-code process.</p>
+                      ) : (
+                        <p className="text-red-600">Incorrect. The primary role of AI is to automate repetitive tasks and streamline the process.</p>
+                      )}
                     </div>
                   )}
                 </div>

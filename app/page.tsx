@@ -4,6 +4,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Zap, BookOpen, Users, Award } from "lucide-react"
+import { ChatWidget } from "@/components/ui/chat-widget"
+import { OnboardingChat } from "@/components/ui/onboarding-chat"
 
 export default function Home() {
   const router = useRouter()
@@ -202,6 +204,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* AI Chatbot */}
+      <ChatWidget />
+      
+      {/* First-time user onboarding */}
+      <OnboardingChat />
     </div>
   )
 }
