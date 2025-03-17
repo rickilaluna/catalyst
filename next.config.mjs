@@ -7,7 +7,6 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
     domains: ['localhost', 'vercel.app'],
     remotePatterns: [
       {
@@ -15,10 +14,7 @@ const nextConfig = {
         hostname: '**',
       },
     ],
-  },
-  experimental: {
-    // webpackBuildWorker: true, // Disable experimental features for better compatibility
-  },
+  }
 }
 
 export default nextConfig
